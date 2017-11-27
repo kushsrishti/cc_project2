@@ -8,11 +8,11 @@ var c;
 var clicked = false;
 
 function preload() {
-  img = loadImage("assets/project3-min.jpg");
+  img = loadImage("assets/project3.jpg");
 }
 
 function setup() {
-  c = createCanvas(1242, 701);
+  c = createCanvas(567, 681);
   //Background
   image(img, 0, 0);
 
@@ -22,6 +22,7 @@ function setup() {
       //
       var w = random(15, 25);
       var h = random(15, 25);
+      ///appends(increases) the array size 
       append(imgb, new ImgBlock(img.get(x, y, w, h), x, y));
 
     ///frameRate(50);
