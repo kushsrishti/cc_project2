@@ -1,17 +1,18 @@
 
 
-var imgb = [];
+var imgb = []; ///array
 var ang = 0;
 var img;
 var brush_size = 100;
 var c;
+var clicked = false;
 
 function preload() {
-  img = loadImage("assets/project2.jpg");
+  img = loadImage("assets/project3-min.jpg");
 }
 
 function setup() {
-  c = createCanvas(400, 500);
+  c = createCanvas(1242, 701);
   //Background
   image(img, 0, 0);
 
@@ -22,12 +23,19 @@ function setup() {
       var w = random(15, 25);
       var h = random(15, 25);
       append(imgb, new ImgBlock(img.get(x, y, w, h), x, y));
+
+    ///frameRate(50);
     }
   }
 }
 
+function mouseClicked(){
+  console.log("click");
+  clicked = true;
+}
+
 function draw() {
-  if (mouseIsPressed) {
+  if (clicked) {
     for (var i = 0; i < imgb.length; i++) {
 
       var ib1 = imgb[i];
@@ -49,18 +57,19 @@ function draw() {
         translate(ib1.x,ib1.y);
         push();
         rect(int(ib1.x) + 5, int(ib1.y) + 5, ib1.img.width, ib1.img.height);
-pop();
+        pop();
         // Fragment
         set(int(ib1.x), int(ib1.y), ib1.img);
 
         // Image Stroke
         noFill();
         stroke(0, 100);
-        strokeWeight(0.5);
+        strokeWeight(0.5); 
+        translate(600);
         rect(int(ib1.x) + 10, int(ib1.y) + 10, ib1.img.width, ib1.img.height);
       }
     }
-    ang += 0.1;
+    ang += 0.09;
   }
 
 }
